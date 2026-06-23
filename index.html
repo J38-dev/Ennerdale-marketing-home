@@ -6,13 +6,11 @@
 
   <title>Ennerdale Marketing</title>
 
-  <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- ICONS -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -22,18 +20,9 @@
 </head>
 <body>
 
-  <!-- HERO -->
-<header class="hero">
-
-  <!-- HERO IMAGE -->
-
-  
-
-  <!-- DARK OVERLAY -->
+  <header class="hero">
 
   <div class="hero-overlay"></div>
-
-  <!-- NAVBAR -->
 
   <nav class="navbar">
 
@@ -69,8 +58,6 @@
 
   </nav>
 
-  <!-- HERO CONTENT -->
-
   <div class="hero-content">
 
     <h1>
@@ -96,8 +83,6 @@
   </div>
 
 </header>
-
-  <!-- FEATURES -->
 
   <section class="features">
 
@@ -138,8 +123,6 @@
     </div>
 
   </section>
-
-<!-- CATEGORIES -->
 
 <section class="categories-section">
 
@@ -217,8 +200,6 @@
 
 </section>
 
-  <!-- PRODUCTS -->
-
   <section class="products-section">
 
     <div class="section-title">
@@ -230,8 +211,6 @@
     </div>
 
     <div class="products-grid">
-
-      <!-- PRODUCT 1 -->
 
       <div class="product-card" id="nike-air-sneakers" data-title="Nike Air Sneakers" data-price="R1299" data-image="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200" data-category="Fashion">
 
@@ -296,8 +275,6 @@
 
       </div>
 
-      <!-- PRODUCT 2 -->
-
       <div class="product-card" id="iphone-14-pro" data-title="iPhone 14 Pro" data-price="R15999" data-image="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200" data-category="Electronics">
 
         <img
@@ -360,8 +337,6 @@
         </div>
 
       </div>
-
-      <!-- PRODUCT 3 -->
 
       <div class="product-card" id="wireless-headphones" data-title="Wireless Headphones" data-price="R799" data-image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200" data-category="Gadgets">
 
@@ -426,8 +401,6 @@
 
       </div>
 
-      <!-- PRODUCT 4 -->
-
       <div class="product-card" id="running-shoes" data-title="Running Shoes" data-price="R950" data-image="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1200" data-category="Sports">
 
         <img
@@ -491,8 +464,6 @@
 
       </div>
 
-      <!-- PRODUCT 5 -->
-
       <div class="product-card" id="luxury-watch" data-title="Luxury Watch" data-price="R2499" data-image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200" data-category="Accessories">
 
         <img
@@ -555,8 +526,6 @@
         </div>
 
       </div>
-
-      <!-- PRODUCT 6 -->
 
       <div class="product-card" id="modern-chair" data-title="Modern Chair" data-price="R1800" data-image="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1200" data-category="Furniture">
 
@@ -625,8 +594,6 @@
 
   </section>
 
-  <!-- CTA -->
-
   <section class="cta-section">
 
     <h2>
@@ -642,8 +609,6 @@
     </a>
 
   </section>
-
-  <!-- FOOTER -->
 
   <footer class="footer">
 
@@ -681,7 +646,6 @@
 
   </footer>
 
-  <!-- WHATSAPP ENQUIRY MODAL -->
   <div id="enquiryModal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close-btn" id="closeModalBtn" aria-label="Close modal">
@@ -694,7 +658,6 @@
       </div>
       
       <div class="modal-body">
-        <!-- Product Quick Preview -->
         <div class="modal-product-preview">
           <img src="" id="modalProductImage" alt="" class="modal-product-img">
           <div class="modal-product-info">
@@ -710,7 +673,6 @@
           </div>
         </div>
         
-        <!-- Composer Area -->
         <div class="modal-composer">
           <label for="modalMessageText" class="modal-label">Your Message:</label>
           <textarea id="modalMessageText" rows="4" placeholder="Type your message here..."></textarea>
@@ -730,6 +692,46 @@
       </div>
     </div>
   </div>
+
+
+  <div id="chatbotWidget" class="chat-widget">
+    <button id="chatToggleBtn" class="chat-toggle-btn" aria-label="Open support chat">
+      <i class="fa-solid fa-comments"></i>
+      <span class="chat-badge">1</span>
+    </button>
+
+    <div id="chatWindow" class="chat-window">
+      <div class="chat-header">
+        <div class="chat-avatar">
+          <i class="fa-solid fa-robot"></i>
+          <span class="online-indicator"></span>
+        </div>
+        <div class="chat-header-info">
+          <h3>Ennerdale Assistant</h3>
+          <p>Typically replies instantly</p>
+        </div>
+        <button id="closeChatBtn" class="chat-close-x" aria-label="Minimize chat">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+      </div>
+
+      <div id="chatBody" class="chat-body">
+        <div class="chat-msg bot">
+          <div class="msg-bubble">
+            Hi there! 👋 Welcome to Ennerdale Marketing. Looking to buy or sell something in the community today?
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <input type="text" id="chatInput" placeholder="Ask a question..." autocomplete="off">
+        <button id="sendChatBtn" aria-label="Send message">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
 
   <script>
     // Config
@@ -871,6 +873,73 @@
     // Trigger hash highlights
     window.addEventListener('load', checkHashAndHighlight);
     window.addEventListener('hashchange', checkHashAndHighlight);
+
+
+    // ================= FLOATING CHATBOT WIDGET LOGIC =================
+    const chatToggleBtn = document.getElementById('chatToggleBtn');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChatBtn = document.getElementById('closeChatBtn');
+    const chatBody = document.getElementById('chatBody');
+    const chatInput = document.getElementById('chatInput');
+    const sendChatBtn = document.getElementById('sendChatBtn');
+    const chatBadge = chatToggleBtn.querySelector('.chat-badge');
+
+    // Toggle window visibility
+    chatToggleBtn.addEventListener('click', () => {
+      chatWindow.classList.toggle('active');
+      if (chatBadge) chatBadge.remove(); // Remove alert badge once read
+    });
+
+    closeChatBtn.addEventListener('click', () => {
+      chatWindow.classList.remove('active');
+    });
+
+    // Append standard message row
+    function appendMessage(text, sender) {
+      const msgRow = document.createElement('div');
+      msgRow.classList.add('chat-msg', sender);
+      msgRow.innerHTML = `<div class="msg-bubble">${text}</div>`;
+      chatBody.appendChild(msgRow);
+      chatBody.scrollTop = chatBody.scrollHeight; // Auto scroll to bottom
+    }
+
+    // Process structured automated answers
+    function getBotResponse(input) {
+      const query = input.toLowerCase();
+      if (query.includes('sell') || query.includes('upload') || query.includes('advertise')) {
+        return "To list a product, click the active <strong>Upload Product</strong> button at the top of the homepage or down in the Call-To-Action panel!";
+      }
+      if (query.includes('buy') || query.includes('order') || query.includes('whatsapp')) {
+        return "Buying is easy! Just click <strong>'Order on WhatsApp'</strong> under any specific product card to text directly with the community vendor.";
+      }
+      if (query.includes('where') || query.includes('location') || query.includes('ennerdale')) {
+        return "We serve the local Ennerdale community and surrounding neighborhoods for safe, fast face-to-face deals.";
+      }
+      if (query.includes('hello') || query.includes('hi') || query.includes('hey')) {
+        return "Hello! Let me know if you are looking to buy goods or list your business offers here.";
+      }
+      return "I'm here to help! Try asking: <em>'How do I sell?'</em>, <em>'How to buy?'</em> or <em>'Where is this based?'</em>.";
+    }
+
+    // Action execution
+    function handleSendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      appendMessage(text, 'user');
+      chatInput.value = '';
+
+      // Simulate humanized processing interval
+      setTimeout(() => {
+        const automatedReply = getBotResponse(text);
+        appendMessage(automatedReply, 'bot');
+      }, 750);
+    }
+
+    sendChatBtn.addEventListener('click', handleSendMessage);
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleSendMessage();
+    });
   </script>
 </body>
 </html>
