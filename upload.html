@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Product - Admin Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Custom layout additions specifically for this form page */
+    .form-container {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    }
+    .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group label {
+      font-weight: 500;
+      font-size: 14px;
+      color: #333;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px 16px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: #25D366;
+      box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.1);
+    }
+    .share-box {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f5f7fb;
+      border-radius: 16px;
+      border: 1px dashed rgba(37, 211, 102, 0.5);
+      display: none; /* Hidden until form is submitted */
+      text-align: center;
+    }
+    .share-box p {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" style="position: relative; background: #111; padding: 15px 24px;">
+    <div class="logo">
+      <i class="fa-solid fa-store"></i>
+      <span>Ennerdale Marketing Portal</span>
+    </div>
+    <div class="nav-actions">
+      <a href="index.html" class="group-btn" style="background: rgba(255,255,255,0.1); color: white;">
+        <i class="fa-solid fa-arrow-left"></i> Back to Site
+      </a>
+    </div>
+  </nav>
+
+  <div class="form-container">
+    <div class="section-title" style="margin-bottom: 25px;">
+      <i class="fa-solid fa-square-plus" style="color: #25D366;"></i>
+      <h2>Prepare Group Advertisement</h2>
+    </div>
+
+    <form id="listingForm">
+      <div class="form-group">
+        <label for="prodTitle">Product Name / Title</label>
+        <input type="text" id="prodTitle" placeholder="e.g., Nike Air Sneakers" required>
+      </div>
+
+      <div class="form-group">
+        <label for="prodPrice">Price (including 'R')</label>
+        <input type="text" id="prodPrice" placeholder="e.g., R1299" required>
+      </div>
+
+      <div class="form-group">
+        <label for="prodCategory">Category</label>
+        <select id="prodCategory" required>
+          <option value="Fashion">Fashion</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Food & Catering">Food & Catering</option>
+          <option value="Services">Services</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="prodDesc">Short Description</label>
+        <textarea id="prodDesc" rows="3" placeholder="Briefly describe item condition or specifics..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="prodId">Website Item ID Anchor</label>
+        <input type="text" id="prodId" placeholder="e.g., nike-air-sneakers (matching the HTML card id)" required>
+      </div>
+
+      <button type="submit" class="modal-send-btn" style="width: 100%; justify-content: center; display: flex; gap: 10px; align-items: center;">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Broadcast Link
+      </button>
+    </form>
+
+    <div id="shareBox" class="share-box">
+      <h3>🎉 Link Generated Successfully!</h3>
+      <p>Click the button below. It will open WhatsApp with your formatted message text. You just have to select your Ennerdale Group and click send!</p>
+      
+      <a id="whatsappBroadcastLink" href="#" target="_blank" class="modal-send-btn" style="display: inline-flex; text-decoration: none; padding: 12px 24px; gap: 8px;">
+        <i class="fa-brands fa-whatsapp"></i> Share to WhatsApp Group
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('listingForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop page refresh
+
+      // 1. Gather inputs
+      const title = document.getElementById('prodTitle').value.trim();
+      const price = document.getElementById('prodPrice').value.trim();
+      const category = document.getElementById('prodCategory').value;
+      const desc = document.getElementById('prodDesc').value.trim();
+      const itemId = document.getElementById('prodId').value.trim().toLowerCase().replace(/\s+/g, '-');
+
+      // 2. Build the exact website URL pointing to this specific product element anchor
+      // Uses your live web domain automatically or defaults to current location folder setup
+      const baseWebUrl = window.location.origin + window.location.pathname.replace('upload.html', 'index.html');
+      const directProductLink = `${baseWebUrl}#${itemId}`;
+
+      // 3. Draft the beautiful WhatsApp broadcast layout template using Markdown formatting
+      const textMessage = 
+        `📢 *NEW LOCAL LISTING AVAILABLE* 📢\n\n` +
+        `📦 *Product:* ${title}\n` +
+        `💰 *Price:* ${price}\n` +
+        `🗂️ *Category:* ${category}\n` +
+        `📍 *Location:* Ennerdale Community\n\n` +
+        `📝 *Description:* _${desc}_\n\n` +
+        `👇 *View Photos & Order Directly on Website Here:* 👇\n` +
+        `${directProductLink}`;
+
+      // 4. URL encode the string payload safely for web browsing
+      const encodedMessage = encodeURIComponent(textMessage);
+      
+      // Using wa.me/ without a number opens the WhatsApp contact/group picker interface cleanly
+      const finalWhatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+
+      // 5. Present the link block to the user
+      const shareBox = document.getElementById('shareBox');
+      const broadcastAnchor = document.getElementById('whatsappBroadcastLink');
+      
+      broadcastAnchor.href = finalWhatsappUrl;
+      shareBox.style.display = 'block';
+      
+      // Auto-smooth scroll view downward slightly to focus on the new button
+      shareBox.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
